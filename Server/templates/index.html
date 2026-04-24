@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autism Prediction System - Early Screening Assessment</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <span class="logo-icon">🧠</span>
+                <span class="logo-text">AutismScreen</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#assessment" class="nav-link">Assessment</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Autism Prediction System</h1>
+            <p class="hero-subtitle">
+                Leveraging advanced machine learning for early screening assistance. 
+                Quick, confidential assessment to support informed healthcare decisions.
+            </p>
+            <button class="btn btn-primary btn-lg" onclick="scrollToAssessment()">
+                Start Assessment
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose AutismScreen?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Early Screening</h3>
+                    <p>Advanced questionnaire designed for early detection and screening support.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>ML-Based Analysis</h3>
+                    <p>Powered by machine learning models trained on extensive datasets.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Private & Secure</h3>
+                    <p>Your data is encrypted and never shared. Complete privacy guaranteed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Section -->
+    <section id="assessment" class="assessment">
+        <div class="container">
+            <h2 class="section-title">Assessment Form</h2>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text"><span id="progressPercent">0</span>% Complete</p>
+            </div>
+
+            <form id="assessmentForm" class="assessment-form">
+                <!-- Step 1: Personal Information -->
+                <div class="form-step active" data-step="1">
+                    <h3 class="step-title">Personal Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" name="age" min="1" max="120" required placeholder="Enter your age">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gender">Gender *</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="m">Male</option>
+                                <option value="f">Female</option>
+                                <option value="o">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ethnicity">Ethnicity *</label>
+                            <select id="ethnicity" name="ethnicity" required>
+                                <option value="">Select Ethnicity</option>
+                                <option value="White-European">White-European</option>
+                                <option value="Latino">Latino</option>
+                                <option value="Asian">Asian</option>
+                                <option value="Black">Black</option>
+                                <option value="Middle Eastern ">Middle Eastern</option>
+                                <option value="Pasifika">Pasifika</option>
+                                <option value="South Asian">South Asian</option>
+                                <option value="Hispanic">Hispanic</option>
+                                <option value="Turkish">Turkish</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="country">Country of Residence *</label>
+                            <select id="country" name="country" required>
+                                <option value="">Select Country</option>
+                                <option value="United States">United States</option>
+                                <option value="Canada">Canada</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Australia">Australia</option>
+                                <option value="India">India</option>
+                                <option value="Brazil">Brazil</option>
+                                <option value="Japan">Japan</option>
+                                <option value="Germany">Germany</option>
+                                <option value="France">France</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="relation">Relation to Assessment *</label>
+                            <select id="relation" name="relation" required>
+                                <option value="">Select Relation</option>
+                                <option value="Self">Self</option>
+                                <option value="Parent">Parent</option>
+                                <option value="Caregiver">Caregiver</option>
+                                <option value="Medical Professional">Medical Professional</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Medical History -->
+                <div class="form-step" data-step="2">
+                    <h3 class="step-title">Medical History</h3>
+                    
+                    <div class="form-group">
+                        <label>Family history of autism? *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="autism" value="yes" required>
+                                <span>Yes</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="autism" value="no" required>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>History of jaundice? *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="jaundice" value="yes" required>
+                                <span>Yes</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="jaundice" value="no" required>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Used an autism screening app before? *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="used_app" value="yes" required>
+                                <span>Yes</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="used_app" value="no" required>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: AQ-10 Screening Questions -->
+                <div class="form-step" data-step="3">
+                    <h3 class="step-title">Autism Spectrum Quotient - 10 (AQ-10)</h3>
+                    <p class="step-description">Please answer the following questions honestly. Each question asks about a trait or behavior.</p>
+
+                    <div class="questions-list">
+                        <div class="question-item">
+                            <label class="question-label">
+                                <span class="q-number">Q1:</span>
+                                I often notice small sounds when others do not
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="A1_Score" value="1" required>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="A1_Score" value="0" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="question-label">
+                                <span class="q-number">Q2:</span>
+                                I usually concentrate more on the whole picture, rather than the small details
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="A2_Score" value="0" required>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="A2_Score" value="1" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="question-label">
+                                <span class="q-number">Q3:</span>
+                                I find it easy to do more than one thing at once
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="A3_Score" value="0" required>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="A3_Score" value="1" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="question-label">
+                                <span class="q-number">Q4:</span>
+                                If there is an interruption, I can switch back to it very quickly
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="A4_Score" value="0" required>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="A4_Score" value="1" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="question-label">
+                                <span class="q-number">Q5:</span>
+                                I find social situations easy
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="A5_Score" value="0" required>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="A5_Score" value="1" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="question-label">
+                                <span class="q-number">Q6:</span>
+                                I find it difficult to work out people's intentions
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="A6_Score" value="1" required>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="A6_Score" value="0" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="question-label">
+                                <span class="q-number">Q7:</span>
+                                I like to collect information about categories of things (e.g. types of cars, birds, trains, plants)
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="A7_Score" value="1" required>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="A7_Score" value="0" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="question-label">
+                                <span class="q-number">Q8:</span>
+                                Does social interaction come naturally to you?
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="A8_Score" value="0" required>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="A8_Score" value="1" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="question-label">
+                                <span class="q-number">Q9:</span>
+                                I am fascinated by numbers
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="A9_Score" value="1" required>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="A9_Score" value="0" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question-item">
+                            <label class="question-label">
+                                <span class="q-number">Q10:</span>
+                                I find myself drawn more to people than to things
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="A10_Score" value="0" required>
+                                    <span>Yes</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="A10_Score" value="1" required>
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Navigation & Submit -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" onclick="previousStep(); return false;" style="display: none;">
+                        ← Previous
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextStep(); return false;">
+                        Next →
+                    </button>
+                    <button type="submit" class="btn btn-success btn-lg" id="submitBtn" style="display: none;">
+                        <span class="btn-text">Analyze Risk</span>
+                        <span class="spinner" id="spinner"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Result Section -->
+    <section id="result" class="result-section" style="display: none;">
+        <div class="container">
+            <div class="result-card">
+                <div class="result-header">
+                    <h2>Assessment Complete</h2>
+                    <button class="close-result" onclick="resetForm()">✕</button>
+                </div>
+
+                <div class="result-content">
+                    <div id="resultBadge" class="result-badge"></div>
+                    <h3 id="resultMessage" class="result-message"></h3>
+                    <p id="resultScore" class="result-score"></p>
+                </div>
+
+                <div class="result-disclaimer">
+                    <p>
+                        <strong>⚠️ Disclaimer:</strong> This assessment tool is designed for screening purposes only and should not be used as a substitute for professional diagnosis. 
+                        Please consult with a qualified healthcare professional for proper evaluation and diagnosis.
+                    </p>
+                </div>
+
+                <div class="result-actions">
+                    <button class="btn btn-primary" onclick="resetForm()">Start New Assessment</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What is AQ-10?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The AQ-10 (Autism Spectrum Quotient-10) is a brief screening questionnaire used to assess the likelihood of autism spectrum disorder traits. It's based on the longer AQ-50 but focuses on 10 key questions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How accurate is this assessment?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>This tool uses a machine learning model trained on extensive data for screening purposes. However, it should not replace professional diagnosis. Please consult with a qualified healthcare provider for accurate diagnosis.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is my data private?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, your data is encrypted and processed securely. We do not store personal information or share your assessment results with any third parties.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Who can use this tool?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>This tool can be used by individuals assessing themselves or by parents, caregivers, and healthcare professionals assessing others. It's designed for ages 16 and above.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What does the result mean?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The result indicates a likelihood of autism spectrum traits based on the screening. A positive result suggests consultation with a healthcare professional is recommended.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How long does the assessment take?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The assessment typically takes 5-10 minutes to complete, depending on how carefully you answer each question.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AutismScreen</h4>
+                    <p>Supporting early screening through advanced machine learning.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#assessment">Assessment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#disclaimer">Medical Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AutismScreen. All rights reserved. This tool is for screening purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
